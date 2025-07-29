@@ -1,0 +1,13 @@
+{
+  "is-main": true,
+  "import": [
+    {
+      "path":"oboard/readline", 
+      "alias":"readline"
+    },
+    {
+      "path":"oboard/moonbit-eval/lib", 
+      "alias":"eval"
+    }
+  ]
+}
