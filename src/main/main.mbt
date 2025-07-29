@@ -19,3 +19,10 @@ fn main {
 
   next()
 }
+
+///|
+test {
+  let vm = @eval.MoonBitVM::new()
+  inspect(vm.eval("fn add(a: Int, b: Int) -> Int { a + b }"), content="(Int, Int) -> Int")
+  inspect(vm.eval("add(1,2)"), content="Int(3)")
+}
