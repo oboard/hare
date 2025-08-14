@@ -14,6 +14,18 @@ moon run src/main --target native
 moon run src/main --target js
 ```
 
+## Build
+
+```bash
+# Native
+moon build --target native --release
+```
+
+```bash
+# Node.js
+moon build --target js --release
+```
+
 !["screenshot"](screenshot.png)
 
 # License
