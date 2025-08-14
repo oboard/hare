@@ -2,8 +2,8 @@
   "name": "oboard/moonbit-repl",
   "version": "0.1.0",
   "deps": {
-    "oboard/readline": "0.1.2",
-    "oboard/moonbit-eval": "0.2.6"
+    "oboard/moonbit-eval": "0.3.1",
+    "oboard/readline": "0.1.4"
   },
   "readme": "README.md",
   "repository": "",

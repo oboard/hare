@@ -6,7 +6,7 @@
       "alias":"readline"
     },
     {
-      "path":"oboard/moonbit-eval/lib", 
+      "path":"oboard/moonbit-eval", 
       "alias":"eval"
     }
   ]
