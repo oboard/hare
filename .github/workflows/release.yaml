@@ -1,0 +1,162 @@
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: js
+            artifact_name: moonbit-repl.js
+            install_script: unix.sh
+            build_target: js
+          - os: ubuntu-latest
+            target: x86_64-linux-gnu
+            artifact_name: moonbit-repl-linux-x64
+            install_script: unix.sh
+            build_target: native
+          - os: windows-latest
+            target: x86_64-windows-msvc
+            artifact_name: moonbit-repl-windows-x64.exe
+            install_script: windows.ps1
+            build_target: native
+          - os: macos-latest
+            target: x86_64-apple-darwin
+            artifact_name: moonbit-repl-macos-x64
+            install_script: unix.sh
+            build_target: native
+          - os: macos-latest
+            target: aarch64-apple-darwin
+            artifact_name: moonbit-repl-macos-arm64
+            install_script: unix.sh
+            build_target: native
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install MoonBit (Unix)
+        if: matrix.os != 'windows-latest'
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/${{ matrix.install_script }} | bash
+          echo "$HOME/.moon/bin" >> $GITHUB_PATH
+
+      - name: Install MoonBit (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: powershell
+        run: |
+          Set-ExecutionPolicy RemoteSigned -Scope CurrentUser; irm https://cli.moonbitlang.com/install/${{ matrix.install_script }} | iex
+          echo "$env:USERPROFILE\.moon\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Verify MoonBit installation
+        run: moon version --all
+
+      - name: Install dependencies
+        run: |
+          moon update
+          moon install
+
+      - name: Setup MSVC (Windows)
+        if: matrix.os == 'windows-latest'
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Set ulimit (Unix)
+        if: matrix.os != 'windows-latest'
+        run: ulimit -s 8176
+
+      - name: Run tests
+        run: |
+          moon check --deny-warn
+          moon test --target js
+
+      - name: Build binary
+        run: |
+          moon build --target ${{ matrix.build_target }}
+
+      - name: Prepare artifact (Unix - Native)
+        if: matrix.os != 'windows-latest' && matrix.build_target == 'native'
+        run: |
+          mkdir -p artifacts
+          cp target/native/release/build/main/main artifacts/${{ matrix.artifact_name }}
+          chmod +x artifacts/${{ matrix.artifact_name }}
+
+      - name: Prepare artifact (JS)
+        if: matrix.build_target == 'js'
+        run: |
+          mkdir -p artifacts
+          cp target/js/release/build/main/main.js artifacts/${{ matrix.artifact_name }}
+
+      - name: Prepare artifact (Windows)
+        if: matrix.os == 'windows-latest' && matrix.build_target == 'native'
+        shell: powershell
+        run: |
+          New-Item -ItemType Directory -Force -Path artifacts
+          Copy-Item "target\native\release\build\main\main.exe" "artifacts\${{ matrix.artifact_name }}"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: artifacts/${{ matrix.artifact_name }}
+          retention-days: 1
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Display structure of downloaded files
+        run: ls -la artifacts/
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            ## MoonBit REPL ${{ github.ref_name }}
+            
+            ### Downloads
+            - **JavaScript**: `moonbit-repl.js` (requires Node.js)
+            - **Linux x64**: `moonbit-repl-linux-x64`
+            - **Windows x64**: `moonbit-repl-windows-x64.exe`
+            - **macOS x64**: `moonbit-repl-macos-x64`
+            - **macOS ARM64**: `moonbit-repl-macos-arm64`
+            
+            ### Installation
+            **JavaScript version:**
+            1. Download `moonbit-repl.js`
+            2. Run: `node moonbit-repl.js`
+            
+            **Native binaries:**
+            1. Download the appropriate binary for your platform
+            2. Make it executable (Unix/macOS): `chmod +x moonbit-repl-*`
+            3. Run: `./moonbit-repl-*` (or `moonbit-repl-windows-x64.exe` on Windows)
+            
+            ### Changes
+            See the commit history for detailed changes in this release.
+          files: |
+            artifacts/moonbit-repl.js/moonbit-repl.js
+            artifacts/moonbit-repl-linux-x64/moonbit-repl-linux-x64
+            artifacts/moonbit-repl-windows-x64.exe/moonbit-repl-windows-x64.exe
+            artifacts/moonbit-repl-macos-x64/moonbit-repl-macos-x64
+            artifacts/moonbit-repl-macos-arm64/moonbit-repl-macos-arm64
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
