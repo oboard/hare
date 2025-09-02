@@ -38,24 +38,48 @@ fn main {
 
   next_with_input("", 0)
 }
+// 计算字符串中未闭合的括号数量（包括大括号和小括号）
 
 ///|
-// 计算字符串中未闭合的括号数量（包括大括号和小括号）
+/// 计算字符串中未闭合的括号数量（包括大括号和小括号）
+///
+/// 参数：
+/// - `input`：要计算的字符串
+///
+/// 返回值：
+/// - 未闭合的括号数量
 fn count_unclosed_braces(input : String) -> Int {
   let mut brace_counter = 0
   let mut paren_counter = 0
+  let mut bracket_counter = 0
+  let mut in_string = false
+  let mut escape_next = false
   for i = 0; i < input.length(); i = i + 1 {
     let char = input[i]
-    if char == '{' {
-      brace_counter = brace_counter + 1
-    } else if char == '}' {
-      brace_counter = brace_counter - 1
-    } else if char == '(' {
-      paren_counter = paren_counter + 1
-    } else if char == ')' {
-      paren_counter = paren_counter - 1
+    if escape_next {
+      escape_next = false
+      continue
+    }
+    if char == '\\' {
+      escape_next = true
+      continue
+    }
+    if char == '"' {
+      in_string = !in_string
+      continue
+    }
+    if !in_string {
+      match char {
+        '{' => brace_counter = brace_counter + 1
+        '}' => brace_counter = brace_counter - 1
+        '(' => paren_counter = paren_counter + 1
+        ')' => paren_counter = paren_counter - 1
+        '[' => bracket_counter = bracket_counter + 1
+        ']' => bracket_counter = bracket_counter - 1
+        _ => ()
+      }
     }
   }
   // 返回未闭合的括号总数
-  brace_counter + paren_counter
+  brace_counter + paren_counter + bracket_counter
 }
