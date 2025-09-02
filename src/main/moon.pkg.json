@@ -2,12 +2,17 @@
   "is-main": true,
   "import": [
     {
-      "path":"oboard/readline", 
-      "alias":"readline"
+      "path": "oboard/readline",
+      "alias": "readline"
     },
     {
-      "path":"oboard/moonbit-eval", 
-      "alias":"eval"
-    }
+      "path": "oboard/moonbit-eval",
+      "alias": "eval"
+    },
+    {
+      "path": "Lampese/moonbit-chalk",
+      "alias": "chalk"
+    },
+    "oboard/moonbit-eval/interpreter"
   ]
 }

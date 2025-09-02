@@ -1,6 +1,6 @@
 ///|
 fn main {
-  println("Welcome to MoonBit REPL v0.2.0")
+  println("Welcome to MoonBit REPL v0.8.2")
   println("Type 'exit' to quit")
   let rl = @readline.new()
   let vm = @eval.MoonBitVM::new()
@@ -23,12 +23,13 @@ fn main {
         next_with_input(new_input, new_counter)
       } else {
         // 括号已平衡，执行代码
-        let result = (vm.eval(new_input) catch {
-          err => {
-            println(err)
-            return
+        let result = match vm.eval(new_input) {
+          Success(value, _) => value.to_string()
+          Error(err, _) => {
+            let err_str = err.to_string()
+            @chalk.chalk().color(@chalk.Red).render(err_str)
           }
-        }).to_string()
+        }
         println(result)
         next_with_input("", 0)
       }
