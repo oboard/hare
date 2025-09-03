@@ -45,7 +45,7 @@ fn parse_args(all_args : Array[String]) -> ArrayView[String] {
 fn main {
   let all_args = @env.args()
   let args = parse_args(all_args)
-  let parser = @clap.Parser::new(prog="moon", subcmds={
+  let parser = @clap.Parser::new(prog="hare", subcmds={
     // "new": @clap.SubCommand::new(help="Create a new MoonBit module"),
     // "build": @clap.SubCommand::new(help="Build the current package"),
     // "check": @clap.SubCommand::new(

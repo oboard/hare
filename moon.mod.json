@@ -2,7 +2,7 @@
   "name": "oboard/hare",
   "version": "0.1.0",
   "deps": {
-    "oboard/moonbit-eval": "0.8.2",
+    "oboard/moonbit-eval": "0.8.3",
     "oboard/readline": "0.1.4",
     "Lampese/moonbit-chalk": "0.4.0",
     "Yoorkin/ArgParser": "0.1.10",
