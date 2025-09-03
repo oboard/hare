@@ -1,0 +1,60 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "oboard/hare/commands"
+
+// Values
+fn handle_add() -> Unit
+
+fn handle_bench() -> Unit
+
+fn handle_build() -> Unit
+
+fn handle_check() -> Unit
+
+fn handle_clean() -> Unit
+
+fn handle_coverage() -> Unit
+
+fn handle_doc() -> Unit
+
+fn handle_fmt() -> Unit
+
+fn handle_generate_build_matrix() -> Unit
+
+fn handle_info() -> Unit
+
+fn handle_install() -> Unit
+
+fn handle_login() -> Unit
+
+fn handle_new() -> Unit
+
+fn handle_package() -> Unit
+
+fn handle_publish() -> Unit
+
+fn handle_register() -> Unit
+
+fn handle_remove() -> Unit
+
+fn handle_run(Array[String]) -> Unit
+
+fn handle_shell_completion() -> Unit
+
+fn handle_test() -> Unit
+
+fn handle_tree() -> Unit
+
+fn handle_update() -> Unit
+
+fn handle_upgrade() -> Unit
+
+fn handle_version(Array[String]) -> Unit
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+

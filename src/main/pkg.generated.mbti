@@ -1,0 +1,15 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "oboard/hare/main"
+
+// Values
+fn start_repl(Array[String]) -> Unit
+
+// Errors
+
+// Types and methods
+type Runtime
+
+// Type aliases
+
+// Traits
+

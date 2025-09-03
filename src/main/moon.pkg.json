@@ -13,6 +13,9 @@
       "path": "Lampese/moonbit-chalk",
       "alias": "chalk"
     },
-    "oboard/moonbit-eval/interpreter"
+    "oboard/moonbit-eval/interpreter",
+    "TheWaWaR/clap",
+    "oboard/hare/commands",
+    "oboard/hare/config"
   ]
 }
