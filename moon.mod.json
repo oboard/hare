@@ -1,5 +1,5 @@
 {
-  "name": "oboard/moonbit_repl",
+  "name": "oboard/hare",
   "version": "0.8.2",
   "deps": {
     "oboard/moonbit-eval": "0.8.2",
@@ -7,7 +7,7 @@
     "Lampese/moonbit-chalk": "0.4.0"
   },
   "readme": "README.md",
-  "repository": "",
+  "repository": "https://github.com/oboard/hare",
   "license": "Apache-2.0",
   "keywords": [],
   "description": "",

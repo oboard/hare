@@ -13,22 +13,22 @@ jobs:
         include:
           - os: ubuntu-latest
             target: js
-            artifact_name: moonbit-repl.js
+            artifact_name: hare.js
             install_script: unix.sh
             build_target: js
           - os: ubuntu-latest
             target: x86_64-linux-gnu
-            artifact_name: moonbit-repl-linux-x64
+            artifact_name: hare-linux-x64
             install_script: unix.sh
             build_target: native
           - os: macos-latest
             target: x86_64-apple-darwin
-            artifact_name: moonbit-repl-macos-x64
+            artifact_name: hare-macos-x64
             install_script: unix.sh
             build_target: native
           - os: macos-latest
             target: aarch64-apple-darwin
-            artifact_name: moonbit-repl-macos-arm64
+            artifact_name: hare-macos-arm64
             install_script: unix.sh
             build_target: native
       fail-fast: false
@@ -113,28 +113,28 @@ jobs:
             ## MoonBit REPL ${{ github.ref_name }}
             
             ### Downloads
-            - **JavaScript**: `moonbit-repl.js` (requires Node.js)
-            - **Linux x64**: `moonbit-repl-linux-x64`
-            - **macOS x64**: `moonbit-repl-macos-x64`
-            - **macOS ARM64**: `moonbit-repl-macos-arm64`
+            - **JavaScript**: `hare.js` (requires Node.js)
+            - **Linux x64**: `hare-linux-x64`
+            - **macOS x64**: `hare-macos-x64`
+            - **macOS ARM64**: `hare-macos-arm64`
             
             ### Installation
             **JavaScript version:**
-            1. Download `moonbit-repl.js`
-            2. Run: `node moonbit-repl.js`
+            1. Download `hare.js`
+            2. Run: `node hare.js`
             
             **Native binaries:**
             1. Download the appropriate binary for your platform
-            2. Make it executable: `chmod +x moonbit-repl-*`
-            3. Run: `./moonbit-repl-*`
+            2. Make it executable: `chmod +x hare-*`
+            3. Run: `./hare-*`
             
             ### Changes
             See the commit history for detailed changes in this release.
           files: |
-            artifacts/moonbit-repl.js/moonbit-repl.js
-            artifacts/moonbit-repl-linux-x64/moonbit-repl-linux-x64
-            artifacts/moonbit-repl-macos-x64/moonbit-repl-macos-x64
-            artifacts/moonbit-repl-macos-arm64/moonbit-repl-macos-arm64
+            artifacts/hare.js/hare.js
+            artifacts/hare-linux-x64/hare-linux-x64
+            artifacts/hare-macos-x64/hare-macos-x64
+            artifacts/hare-macos-arm64/hare-macos-arm64
           draft: false
           prerelease: false
         env:

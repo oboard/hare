@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "oboard/moonbit-repl/main"
+package "oboard/hare/main"
 
 // Values
 

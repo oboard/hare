@@ -1,6 +1,13 @@
-# oboard/moonbit-repl
+# oboard/hare 野兔
 
-A REPL for MoonBit
+Hare is a MoonBit Runtime / ToolKit.
+
+## Features
+
+- REPL
+<!-- - Package Manager ()
+- Build Tool
+- Debugger -->
 
 ## Quick Start
 
