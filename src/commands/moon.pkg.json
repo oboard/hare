@@ -1,5 +1,18 @@
 {
   "import": [
-    "oboard/hare/config"
+    "oboard/hare/config",
+    {
+      "path": "oboard/moonbit-eval",
+      "alias": "eval"
+    },
+    "oboard/moonbit-eval/interpreter",
+    {
+      "path": "Lampese/moonbit-chalk",
+      "alias": "chalk"
+    },
+    {
+      "path": "moonbitlang/x/fs",
+      "alias": "fs"
+    }
   ]
 }

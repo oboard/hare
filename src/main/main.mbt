@@ -21,19 +21,19 @@ fn detect_runtime(all_args : Array[String]) -> Runtime {
 
 ///|
 /// Parse command line arguments based on runtime environment
-fn parse_args(all_args : Array[String]) -> Array[String] {
+fn parse_args(all_args : Array[String]) -> ArrayView[String] {
   match detect_runtime(all_args) {
     JavaScript =>
       // JS环境：跳过运行时和脚本路径
       if all_args.length() > 2 {
-        all_args[2:].to_array()
+        all_args[2:]
       } else {
         []
       }
     Native =>
       // Native环境：跳过程序路径
       if all_args.length() > 1 {
-        all_args[1:].to_array()
+        all_args[1:]
       } else {
         []
       }
@@ -110,7 +110,7 @@ fn main {
   // 检查是否有子命令
   if args.length() == 0 {
     // 没有子命令，默认进入 REPL
-    start_repl(args)
+    start_repl()
     return
   }
   let subcmd = args[0]
@@ -118,7 +118,7 @@ fn main {
     "new" => @commands.handle_new()
     "build" => @commands.handle_build()
     "check" => @commands.handle_check()
-    "run" => @commands.handle_run(args)
+    "run" => @commands.handle_run(args[1:])
     "test" => @commands.handle_test()
     "clean" => @commands.handle_clean()
     "fmt" => @commands.handle_fmt()
@@ -138,8 +138,8 @@ fn main {
     "generate-build-matrix" => @commands.handle_generate_build_matrix()
     "upgrade" => @commands.handle_upgrade()
     "shell-completion" => @commands.handle_shell_completion()
-    "version" => @commands.handle_version(args)
-    "repl" => start_repl(args)
+    "version" => @commands.handle_version()
+    "repl" => start_repl()
     _ => invalid_command(subcmd)
   }
 }

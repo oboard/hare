@@ -25,6 +25,6 @@ pub fn handle_shell_completion() -> Unit {
 }
 
 ///|
-pub fn handle_version(_ : Array[String]) -> Unit {
+pub fn handle_version() -> Unit {
   println(@config.Version)
 }
