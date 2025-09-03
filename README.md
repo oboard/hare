@@ -4,20 +4,36 @@ Hare is a MoonBit Runtime / ToolKit.
 
 ## Features
 
-- REPL
-<!-- - Package Manager ()
-- Build Tool
-- Debugger -->
+- REPL - Interactive MoonBit shell
+- Run - Execute MoonBit files or packages
+- Version - Display version information
+
+## Usage
+
+```bash
+# Start REPL
+hare repl
+
+# Run a MoonBit file
+hare run example.mbt
+
+# Run a package
+hare run package_name
+
+# Show version
+hare version
+
+# Show help
+hare --help
+```
 
 ## Quick Start
 
 ```bash
-# Native
+# Build and run (Native)
 moon run src/main --target native
-```
 
-```bash
-# Node.js
+# Build and run (Node.js)
 moon run src/main --target js
 ```
 
