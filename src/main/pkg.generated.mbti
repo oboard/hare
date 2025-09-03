@@ -2,7 +2,7 @@
 package "oboard/hare/main"
 
 // Values
-fn start_repl(Array[String]) -> Unit
+fn start_repl() -> Unit
 
 // Errors
 

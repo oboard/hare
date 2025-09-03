@@ -36,7 +36,7 @@ fn handle_register() -> Unit
 
 fn handle_remove() -> Unit
 
-fn handle_run(Array[String]) -> Unit
+fn handle_run(ArrayView[String]) -> Unit
 
 fn handle_shell_completion() -> Unit
 
@@ -48,7 +48,7 @@ fn handle_update() -> Unit
 
 fn handle_upgrade() -> Unit
 
-fn handle_version(Array[String]) -> Unit
+fn handle_version() -> Unit
 
 // Errors
 
