@@ -2,10 +2,10 @@
   "name": "oboard/hare",
   "version": "0.1.0",
   "deps": {
-    "oboard/moonbit-eval": "0.8.3",
-    "oboard/readline": "0.1.4",
-    "Lampese/moonbit-chalk": "0.4.0",
-    "Yoorkin/ArgParser": "0.1.10",
+    "oboard/moonbit-eval": "0.8.4",
+    "oboard/readline": "0.1.5",
+    "Lampese/moonbit-chalk": "0.5.0",
+    "Yoorkin/ArgParser": "0.1.11",
     "TheWaWaR/clap": "0.2.5"
   },
   "readme": "README.md",

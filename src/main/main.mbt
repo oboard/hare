@@ -12,7 +12,7 @@ enum Runtime {
 fn detect_runtime(all_args : Array[String]) -> Runtime {
   if all_args.length() > 1 &&
     all_args[1].length() >= 3 &&
-    all_args[1].substring(start=all_args[1].length() - 3) == ".js" {
+    all_args[1].has_prefix(".js") {
     JavaScript
   } else {
     Native
