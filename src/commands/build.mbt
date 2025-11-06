@@ -34,7 +34,7 @@ pub fn handle_run(args : ArrayView[String]) -> Unit {
     vm.eval(content, top=true) |> ignore
     match vm.eval("main()") {
       Success(value, _) =>
-        if vm.interpreter.current_module.find("main").is_empty() {
+        if vm.interpreter.current_pkg.find("main").is_empty() {
           println(value)
         }
       Error(err, _) => {
