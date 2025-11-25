@@ -2,7 +2,7 @@
 
 ///|
 /// Runtime environment enumeration
-enum Runtime {
+priv enum Runtime {
   JavaScript // JS runtime (Node.js, Bun, Deno, etc.)
   Native // Native executable
 }

@@ -5,7 +5,7 @@
 
 ///|
 /// Start the MoonBit REPL
-pub fn start_repl() -> Unit {
+fn start_repl() -> Unit {
   println("Welcome to Hare.mbt REPL \{@config.Version}")
   println("Type 'exit' to quit")
   let rl = @readline.new()

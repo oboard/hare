@@ -2,12 +2,10 @@
 package "oboard/hare/main"
 
 // Values
-fn start_repl() -> Unit
 
 // Errors
 
 // Types and methods
-type Runtime
 
 // Type aliases
 
