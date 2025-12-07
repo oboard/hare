@@ -2,7 +2,7 @@
 package "oboard/hare/config"
 
 // Values
-pub const Version : String = "0.1.1"
+pub const Version : String = "0.1.2"
 
 // Errors
 

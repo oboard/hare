@@ -1,6 +1,6 @@
 {
   "name": "oboard/hare",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "deps": {
     "oboard/moonbit-eval": "0.8.15",
     "oboard/readline": "0.1.5",
