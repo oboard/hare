@@ -2,53 +2,53 @@
 package "oboard/hare/commands"
 
 // Values
-fn handle_add() -> Unit
+pub fn handle_add() -> Unit
 
-fn handle_bench() -> Unit
+pub fn handle_bench() -> Unit
 
-fn handle_build() -> Unit
+pub fn handle_build() -> Unit
 
-fn handle_check() -> Unit
+pub fn handle_check() -> Unit
 
-fn handle_clean() -> Unit
+pub fn handle_clean() -> Unit
 
-fn handle_coverage() -> Unit
+pub fn handle_coverage() -> Unit
 
-fn handle_doc() -> Unit
+pub fn handle_doc() -> Unit
 
-fn handle_fmt() -> Unit
+pub fn handle_fmt() -> Unit
 
-fn handle_generate_build_matrix() -> Unit
+pub fn handle_generate_build_matrix() -> Unit
 
-fn handle_info() -> Unit
+pub fn handle_info() -> Unit
 
-fn handle_install() -> Unit
+pub fn handle_install() -> Unit
 
-fn handle_login() -> Unit
+pub fn handle_login() -> Unit
 
-fn handle_new() -> Unit
+pub fn handle_new() -> Unit
 
-fn handle_package() -> Unit
+pub fn handle_package() -> Unit
 
-fn handle_publish() -> Unit
+pub fn handle_publish() -> Unit
 
-fn handle_register() -> Unit
+pub fn handle_register() -> Unit
 
-fn handle_remove() -> Unit
+pub fn handle_remove() -> Unit
 
-fn handle_run(ArrayView[String]) -> Unit
+pub fn handle_run(ArrayView[String]) -> Unit
 
-fn handle_shell_completion() -> Unit
+pub fn handle_shell_completion() -> Unit
 
-fn handle_test() -> Unit
+pub fn handle_test() -> Unit
 
-fn handle_tree() -> Unit
+pub fn handle_tree() -> Unit
 
-fn handle_update() -> Unit
+pub fn handle_update() -> Unit
 
-fn handle_upgrade() -> Unit
+pub fn handle_upgrade() -> Unit
 
-fn handle_version() -> Unit
+pub fn handle_version() -> Unit
 
 // Errors
 

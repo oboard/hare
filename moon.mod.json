@@ -2,7 +2,7 @@
   "name": "oboard/hare",
   "version": "0.1.1",
   "deps": {
-    "oboard/moonbit-eval": "0.8.14",
+    "oboard/moonbit-eval": "0.8.15",
     "oboard/readline": "0.1.5",
     "Lampese/moonbit-chalk": "0.5.0",
     "TheWaWaR/clap": "0.2.6"

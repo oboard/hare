@@ -60,7 +60,7 @@ fn count_unclosed_braces(input : String) -> Int {
   let mut in_string = false
   let mut escape_next = false
   for i = 0; i < input.length(); i = i + 1 {
-    let char = input[i]
+    let char = input.code_unit_at(i)
     if escape_next {
       escape_next = false
       continue
