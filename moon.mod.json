@@ -2,10 +2,11 @@
   "name": "oboard/hare",
   "version": "0.1.2",
   "deps": {
-    "oboard/moonbit-eval": "0.8.15",
+    "oboard/moonbit-eval": "0.8.16",
     "oboard/readline": "0.1.5",
     "Lampese/moonbit-chalk": "0.5.0",
-    "TheWaWaR/clap": "0.2.6"
+    "TheWaWaR/clap": "0.2.6",
+    "moonbitlang/x": "0.4.38"
   },
   "readme": "README.md",
   "repository": "https://github.com/oboard/hare",
